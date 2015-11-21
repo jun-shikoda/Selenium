@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://mm-system.qiita.com/" />
+<title>manage.gekirea</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">manage.gekirea</td></tr>
+</thead><tbody>
+<tr>
+	<td>store</td>
+	<td>0</td>
+	<td>ID</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{eval(storedVars['ID']) + 1}</td>
+	<td>ID</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td></td>
+	<td>url</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td></td>
+	<td>email</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>admin</td>
+	<td>pass</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>
+	    var date = new Date(); 
+	    var yyyy = date.getFullYear();
+	    var mm = ("0" + (date.getMonth() + 1)).slice(-2); 
+	    var dd = ("0" + date.getDate()).slice(-2);
+	    var hh = ("0" + date.getHours()).slice(-2); 
+	    var mi = ("0" + date.getMinutes()).slice(-2); 
+	    var ss = ("0" + date.getSeconds()).slice(-2); 
+	    storedVars.yyyymmddhhmin = yyyy + '' + mm + '' + dd + '-' + hh + '' + mi + '' + ss;
+	</td>
+	<td>timestamp</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>
+     storedVars.getDatetime=function() { 
+     var date = new Date(); 
+     var y = date.getFullYear();
+     var m = date.getMonth() + 1; 
+     var d = date.getDate();
+     var w = date.getDay();
+     var h = date.getHours(); 
+     var i = date.getMinutes();
+     var j = date.getSeconds();
+     var m = ('0' + m).slice(-2); 
+     d = ('0' + d).slice(-2);   return y + '/' + m + '/' + d + '/' + h + '/' + i + '/' + j; }
+	</td>
+	<td>date</td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>${date}</td>
+	<td>tt</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${url}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=email</td>
+	<td>${email}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=password</td>
+	<td>${pass}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=email</td>
+	<td>${email}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=password</td>
+	<td>${pass}</td>
+</tr>
+<tr>
+	<td>captureEntirePageScreenshot</td>
+	<td>C:\temp\test${ID}.jpg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>var end = (new Date()).getTime() + 2000; while (true) { if (end &lt; (new Date()).getTime()) break; } true;</td>
+	<td>1000000</td>
+</tr>
+</tbody></table>
+</body>
+</html>
