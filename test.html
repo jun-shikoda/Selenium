@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://dev.smaad.net:9000/" />
+<title>繰り返しスクリプト</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">繰り返しスクリプト</td></tr>
+</thead><tbody>
+<tr>
+	<td>store</td>
+	<td>https://XXXXXXXXX.backlog.jp/LoginDisplay.action</td>
+	<td>url</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>https://XXXXXXXXX.backlog.jp/projects/MOBILE_ALL</td>
+	<td>MOBILE_ALL</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>storedVars.getDatetime=function(){var date = new Date(); var y = date.getFullYear(); var m = date.getMonth() + 1; var d = date.getDate(); d = ('0' + d).slice(-2); return y + '/' + m + '/' + d; }</td>
+	<td>date</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>storedVars.getDatetime=function(){var date = new Date(); var y = date.getFullYear(); var m = date.getMonth() -2; var d = date.getDate(); d = ('0' + d).slice(-2); return y + '/' + m + '/' + d; }</td>
+	<td>date1</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>0</td>
+	<td>ID</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>1</td>
+	<td>i</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${url}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>win = this.page().getCurrentWindow();</td>
+	<td></td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>win.location.href.match(/dashboard/)</td>
+	<td>logged_test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=userId</td>
+	<td>XXXXXXXXX</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>XXXXXXXXX</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=autoLogin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>logged_test</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=//body/div[2]/header/div[2]/span</td>
+	<td>100000</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${MOBILE_ALL}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>captureEntirePageScreenshot</td>
+	<td>/Users/XXXXXXXXX/Desktop/img_tmp/MOBILE_ALL_HOME_${ID}.jpg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;navi-find&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#navi-find &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;navi-find&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.tabbed_link.Simple-search &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=完了</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.Advanced-search &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//li[@id='dateConditionButton']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;dateConditionButton&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;createdRangeBegin&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=createdRangeBegin</td>
+	<td>${date1}</td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;createdRangeEnd&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=createdRangeEnd</td>
+	<td>${date}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//th[9]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//table[@id='issues-table']/tbody/tr/td[3]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{eval(storedVars['ID']) + 1}</td>
+	<td>ID</td>
+</tr>
+<tr>
+	<td>captureEntirePageScreenshot</td>
+	<td>/Users/XXXXXXXXX/Desktop/img_tmp/MOBILE_ALL_1.jpg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=back-find-lbl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=完了</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.Advanced-search &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//li[@id='dateConditionButton']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;dateConditionButton&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;createdRangeBegin&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=createdRangeBegin</td>
+	<td>${date1}</td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;createdRangeEnd&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=createdRangeEnd</td>
+	<td>${date}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//th[9]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>for</td>
+	<td>y=2; y &lt;= 20; y++</td>
+	<td>y</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.tabbed_link.Simple-search &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.Advanced-search &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//li[@id='dateConditionButton']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;dateConditionButton&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;createdRangeBegin&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=createdRangeBegin</td>
+	<td>${date1}</td>
+</tr>
+<tr>
+	<td>getEval</td>
+	<td>var elem = window.document.getElementById(&quot;createdRangeEnd&quot;); elem.style.border = &quot;10px #4c4 solid&quot;;</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=createdRangeEnd</td>
+	<td>${date}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//li[@id='dateConditionButton']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//table[@id='issues-table']/tbody/tr[${y}]/td[3]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{eval(storedVars['ID']) + 1}</td>
+	<td>ID</td>
+</tr>
+<tr>
+	<td>captureEntirePageScreenshot</td>
+	<td>/Users/XXXXXXXXX/Desktop/img_tmp/MOBILE_ALL_${ID}.jpg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=back-find-lbl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>endFor</td>
+	<td></td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
