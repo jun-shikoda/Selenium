@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx.jp/" />
+<title>login</title>
+</head>
+//このファイルではCSVコマンドを使用します。//
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">login</td></tr>
+</thead><tbody>
+<tr>
+<td>store</td>
+<td>0</td>
+<td>ID</td>
+</tr>
+<tr>
+<td>store</td>
+<td>javascript{eval(storedVars['ID']) + 1}</td>
+<td>ID</td>
+</tr>
+<tr>
+<td>store</td>
+<td>https://XXXXXXXXXXXXXXXXXXXX.cgi?</td>
+<td>url</td>
+</tr>
+<tr>
+<td>open</td>
+<td>${url}</td>
+<td></td>
+</tr>
+<tr>
+<td>captureEntirePageScreenshot</td>
+<tdC:\temp\XXXXXXXXXXXXXXXXXXXX.jpg</td>
+<td></td>
+</tr>
+<tr>
+<td>getEval</td>
+<td>win=this.page().getCurrentWindow();</td>
+<td></td>
+</tr>
+<tr>
+<td>storeCsv</td>
+<td>C:\temp\account16.csv</td>
+<td>test_list</td>
+</tr>
+<tr>
+<td>arrayEach</td>
+<td>test_list</td>
+<td>test_row</td>
+</tr>
+<tr>
+<td>open</td>
+<td>https://XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX?search=${test_row}</td>
+<td></td>
+</tr>
+<tr>
+<td>store</td>
+<td>javascript{eval(storedVars['ID']) + 1}</td>
+<td>ID</td>
+</tr>
+<tr>
+<td>captureEntirePageScreenshot</td>
+<td>C:\temp\有効化処理済ID_${test_row}.jpg</td>
+<td></td>
+</tr>
+<tr>
+<td>endArrayEach</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
