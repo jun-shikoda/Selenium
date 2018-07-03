@@ -1,0 +1,216 @@
+package test;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ErrorCollector;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SiteSearch {
+private WebDriver driver;
+
+@Before
+//記載（テスト）
+public void setUp() throws Exception {
+//unknown error: call function result missingが表示していると旧バージョンのため起動せず。	
+System.setProperty("webdriver.chrome.driver","C:\\tmp\\chromedriver.exe");
+//Google Chrome起動
+driver = new ChromeDriver();
+driver.manage().window().maximize();
+//テストdemo環境の切り替え処理
+String baseUrl = "https://demoXXXXXXXXXXXXXXXXXX.jp/";
+//InternetExplorerDriver起動
+//driver = new InternetExplorerDriver();
+//ログインURL 固定で渡さないようにする
+driver.get(baseUrl);
+//driver.findElement(By.id("password")).clear();
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+Thread.sleep(3000);
+File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE); 
+// 取得したファイルを出力します 
+FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot1.png"));
+//driver.findElement(By.id("password")).clear();
+driver.findElement(By.name("login_address")).clear();
+driver.findElement(By.cssSelector("button.btn-blue-lg")).click();
+System.out.println("ページ: " + driver.getTitle());
+File scrFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE); 
+FileUtils.copyFile(scrFile1, new File("c:\\tmp\\screenshot2.png"));
+//XXXXXX画面開く
+driver.get(baseUrl+"profile_book");
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+Thread.sleep(3000);
+//driver.get(baseUrl+"/personal/detail/pb?member_id=15221&pos=2");
+//ページリクエスト時のタイムアウト設定:60秒
+driver.findElement(By.xpath("//*[@id='container-main']/div/div[1]/div/div[1]/div/div/div[1]/div[1]/div[1]")).isDisplayed();
+//XXXXXX画面開く
+driver.get(baseUrl+"voice_note");
+//画面の遷移
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+Thread.sleep(3000);
+//XXXXXX画面開く
+driver.get(baseUrl+"smart_review");
+//新規イベントボタンをクリックする
+driver.findElement(By.xpath("//div[8]/div/div[4]/div/div[1]/div/div[1]/div/div/div[1]/div[2]/div/a[3]")).click();
+//イベント名を入力する
+driver.findElement(By.xpath("//div[27]/div/div[2]/div/div[1]/div/div[2]/div/div[1]/input")).sendKeys("テストテストテストテスト");
+//待機
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+//補足説明の入力
+driver.findElement(By.id("description")).sendKeys("テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト");
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+//保存
+driver.findElement(By.xpath("//div[27]/div/div[3]/div/button")).click();
+FileUtils.copyFile(scrFile1, new File("c:\\tmp\\screenshot3.png"));
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+//アップロード
+//driver.findElement(By.id("ID名")).sendKeys("c:\\tmp\\screenshot2.png");
+//ページリクエスト時のタイムアウト設定:60秒
+//driver.manage().timeouts().pageLoadTimeout(60,TimeUnit.SECONDS);
+//driver.findElement(By.xpath("//div[@id='sr_event_area']/div/div[2]/a/img")).click();
+//driver.findElement(By.xpath("//span/a")).click();
+//driver.findElement(By.id("modeSelectRadio1")).click();
+//driver.get(baseUrl+"smart_review");
+//画面の遷移
+Thread.sleep(3000);
+//CHART BOARD画面開く
+driver.get(baseUrl+"chart_board");
+FileUtils.copyFile(scrFile1, new File("c:\\tmp\\screenshot4.png"));
+//画面の遷移
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+Thread.sleep(3000);
+//SYNAPSE TREE画面開く
+driver.get(baseUrl+"synapse_tree");
+FileUtils.copyFile(scrFile1, new File("c:\\tmp\\screenshot5.png"));
+Thread.sleep(3000);
+//画面の遷移
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+//CHECKUP CABIN画面開く
+driver.get(baseUrl+"checkup_cabin");
+//画面の遷移
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+FileUtils.copyFile(scrFile1, new File("c:\\tmp\\screenshot6.png"));
+//PROFILE BOOK画面開く
+driver.get(baseUrl+"profile_book");
+//キーワードで絞り込む「テスト」検索
+driver.findElement(By.id("inputKeyword")).sendKeys("東京大学");
+//キーワードで絞り込む「テスト」検索
+driver.findElement(By.id("inputKeywordBtn")).click();
+driver.manage().timeouts().pageLoadTimeout(100,TimeUnit.SECONDS);
+Thread.sleep(3000);
+driver.findElement(By.xpath("//*[@id='container-side-menu']/div/div[1]/div/p[2]/a")).click();
+driver.findElement(By.id("input_Keyword")).sendKeys("東京大学");
+Thread.sleep(3000);
+FileUtils.copyFile(scrFile1, new File("c:\\tmp\\screenshot7.png"));
+//キーワードで絞り込む「テスト」検索
+driver.findElement(By.id("inputKeywordBtn")).click();
+driver.manage().timeouts().pageLoadTimeout(100,TimeUnit.SECONDS);
+Thread.sleep(3000);
+//キャプチャ取得
+TakesScreenshot screen = (TakesScreenshot) driver;
+Path capture = Paths.get("C:\\tmp\\profile_book.png");
+Files.write(capture, screen.getScreenshotAs(OutputType.BYTES));
+//キーワードで絞り込む「テスト」検索
+driver.findElement(By.id("inputKeywordBtn")).click();
+//キーワードで絞り込む「テスト」検索
+driver.findElement(By.id("inputKeywordBtn")).click();
+//PROFILE BOOK画面開く
+driver.get(baseUrl+"/setup/login_user_setting");
+//キーワードで絞り込む「テスト」検索
+driver.findElement(By.className("title-item")).click();
+//キャプチャ取得
+//キーワードで絞り込む「テスト」検索
+//driver.findElement(By.xpath("//*[@id='global_header']/div/div[3]/p[5]/a")).click();
+
+for (int second = 0;; second++) {
+	if (second >= 60) fail("timeout");
+	try { if (isElementPresent(By.xpath("(//body/div[7]/div/div[4]/div/div[1]/div/div[2]/div[2]/div/div/div/div[3]/div/ul/li[3]/div/ul/li[3]/a)"))) break; } catch (Exception e) {}
+	Thread.sleep(1000000);
+}
+driver.get(baseUrl+"profile_book");
+//driver.get(baseUrl1);
+//PROFILE BOOK画面開く
+driver.get(baseUrl+"profile_book");
+//driver.get(baseUrl+"/personal/detail/pb?member_id=15221&pos=2");
+//driver.findElement(By.xpath("//li/ul/li")).click();
+//driver.findElement(By.xpath("//li/ul/li/ul/li/a")).click();
+//driver.findElement(By.id("pb_sheet_value_add")).click();
+//driver.findElement(By.xpath("(//li[@value='1790'])[2]")).click();
+//driver.findElement(By.xpath("//div[26]/div/div[3]/div/button")).click();
+//ページリクエスト時のタイムアウト設定:60秒
+driver.manage().timeouts().pageLoadTimeout(60,TimeUnit.SECONDS);
+//PICKUP LIST画面開く
+driver.get(baseUrl+"pickup_list");
+Paths.get("C:\\tmp\\pickup_list.png");
+//VOICE NOTE画面開く
+driver.get(baseUrl+"voice_note");
+//画面の遷移
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+Thread.sleep(3000);
+//SMART　REVIEW画面開く
+driver.get(baseUrl+"smart_review");
+//ページリクエスト時のタイムアウト設定:60秒
+driver.manage().timeouts().pageLoadTimeout(60,TimeUnit.SECONDS);
+driver.findElement(By.xpath("//div[@id='sr_event_area']/div/div[2]/a/img")).click();
+driver.findElement(By.xpath("//span/a")).click();
+driver.findElement(By.id("modeSelectRadio1")).click();
+driver.get(baseUrl+"smart_review");
+//画面の遷移
+driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+Thread.sleep(3000);
+// 
+capture("C:/tmp/test1.png");
+
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+}
+
+private void capture(String string) {
+	// TODO 自動生成されたメソッド・スタブ
+	
+}
+
+private boolean isElementPresent(By xpath) {
+	// TODO 自動生成されたメソッド・スタブ
+	return false;
+}
+
+private void fail(String string) {
+	// TODO 自動生成されたメソッド・スタブ
+	
+}
+
+@Test
+public void test() throws Exception {
+
+}
+
+
+@Rule
+
+public ErrorCollector collector = new ErrorCollector();
+
+@Test
+
+public void test1() throws Exception {
+}
+
+@After
+
+public void tearDown() throws Exception {
+
+driver.quit();
+}
+
+}
