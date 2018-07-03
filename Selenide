@@ -1,0 +1,79 @@
+package org.gradle;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+
+	public class Person {
+	    @Test
+	    public void test() {
+	    	//Selenide用の設定:Chrome
+	    	Configuration.browser = WebDriverRunner.CHROME;
+	    	//Configuration.browser = WebDriverRunner.INTERNET_EXPLORER;
+	    	//Chromeドライバーの設定
+	    	System.setProperty("webdriver.chrome.driver","C:\\tmp\\chromedriver.exe");
+	    	//System.setProperty("webdriver.ie.driver","C:\\tmp\\IEDriverServer.exe");
+	        //demoX環境の指定
+	    	Configuration.baseUrl = "https://demo9service.XXXXXX.jp";
+	    	//Configuration.baseUrl = "https://demo8service.XXXXXX.jp";
+	    	//Configuration.baseUrl = "https://demo7service.XXXXXX.jp";
+	    	Selenide.open("/");
+	    	//$("#srchtxt").shouldBe(focused); 
+	    	//自動ログインユーザー
+	    	$(By.name("login_address")).setValue("XXXXXXXXXXXXXXXX");
+	    	//パスワード設定
+	    	$("#password").scrollTo();
+	    	$("#password").setValue("XXXXXXXXXXXXXXXX");
+	    	//保存ボタンクリック
+	    	$(By.cssSelector("button.btn-blue-lg")).click();
+	    	//PBの画像をクリック
+ 	        $(By.cssSelector("a.top-service-image.service_profile_book")).click();
+ 	        try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+ 	        $(By.cssSelector("a.show-personal > img")).click();
+	        //$("container-main").should(disappear);
+ 	        try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+  	        open("/profile_book");
+	        try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+ 	        $(By.cssSelector("div.arrow")).click();
+	        try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+	        $(By.id("add_member_link")).click();
+	        try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+	        $(By.xpath("//span/span/input")).click();
+	        try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+    }
+}	
